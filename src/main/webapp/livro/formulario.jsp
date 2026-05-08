@@ -1,15 +1,17 @@
-﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><title>Formulário Livro</title></head>
 <body>
+<fmt:setLocale value="pt_BR"/>
 <h1><c:choose><c:when test="${livro != null}">Editar</c:when><c:otherwise>Novo</c:otherwise></c:choose> Livro</h1>
 <form action="${pageContext.request.contextPath}/livros" method="post">
 <input type="hidden" name="id" value="${livro.id}">
 <p>Título: <input type="text" name="titulo" value="${livro.titulo}" required></p>
 <p>Autor: <input type="text" name="autor" value="${livro.autor}" required></p>
 <p>Ano: <input type="number" name="ano" value="${livro.ano}" required></p>
-<p>Preço: <input type="text" name="preco" value="${livro.preco}" required></p>
+<p>Preço: <input type="text" name="preco" value="<fmt:formatNumber value='${livro.preco}' minFractionDigits='2' maxFractionDigits='2'/>" placeholder="54,00" required></p>
 <p>Editora:
 <select name="editoraId" required>
 <c:forEach var="editora" items="${editoras}">

@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.util.Locale;
 
 @WebServlet("/livros")
 public class LivroController extends HttpServlet {
@@ -52,7 +56,7 @@ public class LivroController extends HttpServlet {
         livro.setTitulo(req.getParameter("titulo"));
         livro.setAutor(req.getParameter("autor"));
         livro.setAno(Integer.parseInt(req.getParameter("ano")));
-        livro.setPreco(new BigDecimal(req.getParameter("preco")));
+        livro.setPreco(parsePreco(req.getParameter("preco")));
         Editora editora = new Editora();
         editora.setId(Long.parseLong(req.getParameter("editoraId")));
         livro.setEditora(editora);
@@ -64,5 +68,21 @@ public class LivroController extends HttpServlet {
             livroDAO.atualizar(livro);
         }
         resp.sendRedirect("livros?acao=listar");
+    }
+
+    private BigDecimal parsePreco(String precoTexto) {
+        if (precoTexto == null || precoTexto.isBlank()) {
+            throw new IllegalArgumentException("Preco invalido");
+        }
+
+        String normalizado = precoTexto.replace("R$", "").trim();
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("pt", "BR"));
+        DecimalFormat format = new DecimalFormat("#,##0.00", symbols);
+        format.setParseBigDecimal(true);
+        try {
+            return (BigDecimal) format.parse(normalizado);
+        } catch (ParseException e) {
+            throw new IllegalArgumentException("Preco invalido: " + precoTexto, e);
+        }
     }
 }
