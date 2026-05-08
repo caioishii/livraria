@@ -1,0 +1,18 @@
+﻿CREATE DATABASE IF NOT EXISTS livraria;
+USE livraria;
+
+CREATE TABLE IF NOT EXISTS editora (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL,
+    cidade VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS livro (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(255) NOT NULL,
+    autor VARCHAR(255) NOT NULL,
+    ano INT NOT NULL,
+    preco DECIMAL(10,2) NOT NULL,
+    editora_id BIGINT NOT NULL,
+    CONSTRAINT fk_livro_editora FOREIGN KEY (editora_id) REFERENCES editora(id)
+);
