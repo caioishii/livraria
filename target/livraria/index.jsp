@@ -4,4 +4,5 @@
 <body>
 <h1>Livraria</h1>
 <p><a href="livros?acao=listar">CRUD de Livros</a></p>
+<p><a href="editoras?acao=listar">CRUD de Editoras</a></p>
 </body></html>
