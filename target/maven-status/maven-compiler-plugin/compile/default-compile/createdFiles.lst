@@ -1,6 +1,0 @@
-br\ufscar\dsw\livraria\model\Livro.class
-br\ufscar\dsw\livraria\dao\EditoraDAO.class
-br\ufscar\dsw\livraria\model\Editora.class
-br\ufscar\dsw\livraria\controller\LivroController.class
-br\ufscar\dsw\livraria\dao\LivroDAO.class
-br\ufscar\dsw\livraria\util\ConnectionFactory.class
