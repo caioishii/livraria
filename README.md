@@ -1,6 +1,6 @@
 ﻿# Livraria (DSW1)
 
-Projeto web Java (Servlet/JSP) para gerenciamento de **livros** e **editoras**, desenvolvido para a disciplina DSW1.
+Exercício web Java (Servlet/JSP) para gerenciamento de **livros** e **editoras**, desenvolvido para a disciplina DSW1.
 
 ## Tecnologias
 - Java 11
@@ -42,5 +42,5 @@ Projeto web Java (Servlet/JSP) para gerenciamento de **livros** e **editoras**, 
 - CRUD de Livros
 
 ## Observações
-- O projeto usa padrão MVC simples com Servlet + JSP.
+- O exercício usa padrão MVC simples com Servlet + JSP.
 - Dependendo do ambiente, pode ser necessário ajustar URL, porta ou contexto no servidor.
